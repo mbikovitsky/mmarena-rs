@@ -5,4 +5,8 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["memoryapi", "winnt", "sysinfoapi"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = { version = "0.2", default-features = false }
